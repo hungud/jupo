@@ -2451,9 +2451,11 @@ function refresh(element) {
     });
 
     $.global.uploader.bind('Error', function(up, err) {
-      $('#' + file.id).hide();
-      notify("Error: " + err.code + ", Message: " + err.message + (err.file ? ", File: " + err.file.name : ""));
-
+      //$('#' + file.id).hide();
+      //notify("Error: " + err.code + ", Message: " + err.message + (err.file ? ", File: " + err.file.name : ""));
+      var error_message = "Error: " + err.code + ", Message: " + err.message + (err.file ? ", File: " + err.file.name : "");
+      $('#error').html(error_message);
+      show_error(); 
     });
 
     $.global.uploader.bind('FileUploaded', function(up, file, response) {
